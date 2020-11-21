@@ -33,11 +33,28 @@ export interface Weather {
   icon: string;
   id: number;
   main: string;
+  icon_link?: string; //icon links will be generated here
 };
 
 export const cityCoordinates = {
   'amsterdam': {
     lat: 52.37,
     lon: 4.89
+  },
+  'london' : {
+    lat: 51.51,
+    lon: -0.12
+  },
+  'paris': {
+    lat: 48.85,
+    lon: 2.35
+  },
+  'los angeles': {
+    lat: 34.05,
+    lon: -118.24
+  },
+  'skopje': {
+    lat: 42,
+    lon: 21.42
   }
 }

@@ -1,0 +1,36 @@
+@import '/src/assets/scss/variables.scss';
+
+mat-toolbar {
+  position: relative;
+  img {
+    width: 6.5rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-items: flex-start !important;
+  }
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 2.5rem;
+    color: $color-primary;
+  }
+
+}
+
+.city-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10rem;
+
+  .city {
+    display: flex;
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+  }
+}

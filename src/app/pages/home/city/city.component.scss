@@ -1,0 +1,35 @@
+@import 'src/assets/scss/variables.scss';
+
+.card {
+  width: 100%;
+
+  &-header {
+    &-title {
+      color: $color-primary;
+    }
+
+    &-subtitle {
+      color: $color-black;
+      font-style: italic;
+    }
+  }
+
+  &-content-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px #000 solid;
+    font-size: 1.4rem;
+    span:nth-child(2) {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}

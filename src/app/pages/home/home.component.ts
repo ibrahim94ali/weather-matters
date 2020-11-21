@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherDataService } from 'src/app/core/data';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { FullWeather } from 'src/app/core/data/weather/weather';
 
 @Component({
@@ -13,17 +13,16 @@ export class HomeComponent implements OnInit {
 
   weathers: FullWeather[];
   weathers$ = this.weatherDataService.weathers$.pipe(
+    filter(result => result.length > 0),
     map(result => {
-      console.log(result);
       this.weathers = result;
-      return result;
+      return this.weathers;
     })
   );
 
   constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit(): void {
-    this.weatherDataService.getWeatherByName('amsterdam');
+    this.weatherDataService.getWeathersByNames(['amsterdam', 'london', 'paris', 'los angeles', 'skopje']);
   }
-
 }
