@@ -8,6 +8,17 @@
 </mat-toolbar>
 
 <div class="city-container">
-  <app-city *ngFor="let weather of weathers" class="city" [weather]="weather" ></app-city>
+  <app-city *ngFor="let weather of weathers; let i = index" class="city" [weather]="weather" (seeHourly)="seeHourlyChart(i)" ></app-city>
+</div>
+
+<div class="chart"
+id="timeline-chart"
+[hidden]="!chartData">
+<h3>{{chartData?.name}}</h3>
+<button mat-icon-button (click)="closeChart()">
+  <mat-icon>close</mat-icon>
+</button>
+  <app-line-chart
+  [chartData]="chartData"></app-line-chart>
 </div>
 </ng-container>

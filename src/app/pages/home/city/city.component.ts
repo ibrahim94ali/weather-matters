@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FullWeather } from 'src/app/core/data/weather/weather';
 
 @Component({
@@ -9,10 +9,15 @@ import { FullWeather } from 'src/app/core/data/weather/weather';
 export class CityComponent implements OnInit {
 
   @Input() weather: FullWeather;
+  @Output() seeHourly = new EventEmitter;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  seeHourlyWeather(): void {
+    this.seeHourly.next();
   }
 
 }

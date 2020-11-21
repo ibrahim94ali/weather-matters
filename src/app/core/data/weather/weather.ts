@@ -5,6 +5,7 @@ export interface FullWeather {
   lon: number;
   timezone: string;
   timezone_offset: number;
+  name?: string;
 };
 
 export interface CurrentWeather {
@@ -49,9 +50,9 @@ export const cityCoordinates = {
     lat: 48.85,
     lon: 2.35
   },
-  'los angeles': {
-    lat: 34.05,
-    lon: -118.24
+  'moscow': {
+    lat: 55.75,
+    lon: 37.61
   },
   'skopje': {
     lat: 42,

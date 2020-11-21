@@ -2,17 +2,14 @@
 
 mat-toolbar {
   position: relative;
+  justify-content: center;
   img {
     width: 6.5rem;
-    margin-left: 1rem;
-    display: flex;
-    justify-items: flex-start !important;
+    position: absolute;
+    left: 2%;
   }
 
   h1 {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
     font-size: 2.5rem;
     color: $color-primary;
   }
@@ -32,5 +29,32 @@ mat-toolbar {
     margin-left: 2rem;
     margin-top: 2rem;
 
+    width: 22rem;
+
+  }
+}
+
+.chart {
+  position: relative;
+  margin: 5rem 0 2rem 0;
+
+  h3 {
+    text-align: center;
+    color: $color-primary;
+    font-size: 2.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+
+	app-line-chart {
+    display: flex;
+    margin: 0 auto;
+		width: 50%;
+  }
+  button {
+    position: absolute;
+    right: 20%;
+    top: 0%;
   }
 }

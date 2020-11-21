@@ -16,7 +16,7 @@ export class WeatherDataService {
   getWeathersByNames(name: string[]) {
     name.forEach((name) => {
       const {lat, lon} = cityCoordinates[name];
-      this.weatherService.getWeatherByName(lat, lon).subscribe(
+      this.weatherService.getWeatherByName(name, lat, lon).subscribe(
         (res: FullWeather) => this._weathers.next([...this._weathers.value, res]),
         (error) => console.error(error)
       );

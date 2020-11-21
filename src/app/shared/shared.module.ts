@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+import { LineChartModule } from './line-chart/line-chart.module';
 
 
 
@@ -12,12 +16,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CommonModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    LineChartModule,
+    MatIconModule
   ],
   exports: [
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    LineChartModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }
