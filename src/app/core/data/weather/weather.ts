@@ -1,41 +1,43 @@
-export interface Weather {
-  base: string;
-  clouds: {
-    all: number;
-  };
-  cod: number;
-  coord: {
-    lat: number;
-    lon: number;
-  };
+export interface FullWeather {
+  current: CurrentWeather;
+  hourly: HourlyWeather [];
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: number;
+};
+
+export interface CurrentWeather {
+  clouds: number;
+  dew_point: number;
   dt: number;
-  id: number;
-  main: {
-    feels_like: number;
-    humidity: number;
-    pressure: number;
-    temp: number;
-    temp_max: number;
-    temp_min: number;
-  };
-  name: string;
-  sys: {
-    country: string;
-    id: number;
-    sunrise: number;
-    sunet: number;
-    type: number;
-  };
-  timezone: number;
+  feels_like: number;
+  humidity: number;
+  pressure: number;
+  sunrise: number;
+  sunset: number;
+  temp: number;
+  uvi: number;
   visibility: number;
-  weather: {
-    description: string;
-    icon: string;
-    id: number;
-    main: string;
-  } [];
-  wind: {
-    deg: number;
-    speed: number;
+  weather: Weather [];
+  wind_deg: number;
+  wind_speed: number;
+};
+
+export interface HourlyWeather extends CurrentWeather {
+  pop: number;
+};
+
+export interface Weather {
+  description: string;
+  icon: string;
+  id: number;
+  main: string;
+};
+
+export const cityCoordinates = {
+  'amsterdam': {
+    lat: 52.37,
+    lon: 4.89
   }
 }
