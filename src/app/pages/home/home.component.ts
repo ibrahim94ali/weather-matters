@@ -3,11 +3,12 @@ import { WeatherDataService } from 'src/app/core/data';
 import { filter, map } from 'rxjs/operators';
 import { FullWeather } from 'src/app/core/data/weather/weather';
 import { LineChartData } from 'src/app/shared/line-chart/line-chart.component';
-
+import { listAnimation } from 'src/app/shared/utils/animations';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [listAnimation]
 })
 export class HomeComponent implements OnInit {
 

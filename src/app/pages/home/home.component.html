@@ -7,8 +7,8 @@
   <h1>Welcome to Weather Matters</h1>
 </mat-toolbar>
 
-<div class="city-container">
-  <app-city *ngFor="let weather of weathers; let i = index" class="city" [weather]="weather" (seeHourly)="seeHourlyChart(i)" ></app-city>
+<div class="city-container" [@listAnimation]="weathers?.length">
+  <app-city *ngFor="let weather of weathers; let i = index" [weather]="weather" (seeHourly)="seeHourlyChart(i)" ></app-city>
 </div>
 
 <div class="chart"
