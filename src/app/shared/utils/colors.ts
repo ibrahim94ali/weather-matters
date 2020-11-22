@@ -5,5 +5,5 @@ export const colors = {
   secondary: '#1a6950',
   danger: '#ff2929',
   gray: '#888',
-  lightGray: 'eceef7',
+  lightGray: '#eceef7',
 };
