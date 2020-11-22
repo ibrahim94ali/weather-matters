@@ -14,10 +14,13 @@
 <div class="chart"
 id="timeline-chart"
 [hidden]="!chartData">
-<h3>{{chartData?.name}}</h3>
+<div class="chart-header">
+<span>{{chartData?.name}}
+</span>
 <button mat-icon-button (click)="closeChart()">
   <mat-icon>close</mat-icon>
 </button>
+</div>
   <app-line-chart
   [chartData]="chartData"></app-line-chart>
 </div>
