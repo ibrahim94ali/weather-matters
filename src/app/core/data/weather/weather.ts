@@ -34,7 +34,7 @@ export interface Weather {
   icon: string;
   id: number;
   main: string;
-  icon_link?: string; //icon links will be generated here
+  icon_link?: string; //icon link will be generated here
 };
 
 export const cityCoordinates = {

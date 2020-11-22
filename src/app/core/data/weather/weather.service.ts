@@ -13,21 +13,31 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getWeatherByName(name: string, lat: number, lon: number): Observable<FullWeather> {
+  getWeatherByName(lat: number, lon: number): Observable<FullWeather> {
     return this.http.get<FullWeather>(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=daily,minutely&appid=${environment.weatherAPIKey}`)
     .pipe(
-      map((result: FullWeather) => this.addIconLink(name, result))
+      map((result: FullWeather) => this.addIconLink(result))
     );
   }
 
-  addIconLink(name: string, result: FullWeather): FullWeather {
+  //adding icon links based on current weather icon id
+  addIconLink(result: FullWeather): FullWeather {
     if (!result) return;
 
-    result.name = capitalize(name);
+    result.name = capitalize(this.parseNames(result?.timezone));
 
     if (result?.current?.weather?.length) {
       result.current.weather[0].icon_link = `http://openweathermap.org/img/wn/${result.current.weather[0].icon}.png`
     }
     return result;
+  }
+
+  //parsing Timezone Names (eg: Europe/Amsterdam)
+  parseNames(name: string): string {
+    if (name.includes('/')) {
+      return name.split('/')[1];
+    } else {
+      return name;
+    }
   }
 }
