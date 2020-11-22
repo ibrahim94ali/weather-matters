@@ -1,14 +1,14 @@
-@import 'src/assets/scss/variables';
+@import "src/assets/scss/variables";
 
 :host.error-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 2rem 2rem;
-	width: 90%;
-	max-width: 50rem;
-	border: 2px dashed $color-danger;
-	border-radius: 24px 0 24px 24px;
-	color: $color-danger;
-	font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2rem;
+  width: 90%;
+  max-width: 50rem;
+  border: 2px dashed $color-danger;
+  border-radius: 24px 0 24px 24px;
+  color: $color-danger;
+  font-size: 1.6rem;
 }

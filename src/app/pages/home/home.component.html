@@ -1,34 +1,41 @@
-<ng-container *ngIf="{
-  weatherState: weatherState$ | async,
-  weathers: weathers$ | async
-} as data">
+<ng-container
+  *ngIf="{
+    weatherState: weatherState$ | async,
+    weathers: weathers$ | async
+  } as data"
+>
+  <mat-toolbar>
+    <img src="assets/images/logo.png" />
+    <h1>Welcome to Weather Matters</h1>
+  </mat-toolbar>
 
-<mat-toolbar>
-  <img src="assets/images/logo.png"/>
-  <h1>Welcome to Weather Matters</h1>
-</mat-toolbar>
+  <div class="city-container" [@listAnimation]="weathers?.length">
+    <!-- Loading State -->
+    <mat-spinner
+      [diameter]="40"
+      *ngIf="data.weatherState === LoadingState.LOADING"
+    ></mat-spinner>
+    <!-- Error State -->
+    <app-error
+      class="error-container"
+      *ngIf="data.weatherState === LoadingState.FAILED"
+      >An error has occured. Please try again...</app-error
+    >
 
-<div class="city-container" [@listAnimation]="weathers?.length">
+    <app-city
+      *ngFor="let weather of weathers; let i = index"
+      [weather]="weather"
+      (seeHourly)="seeHourlyChart(i)"
+    ></app-city>
+  </div>
 
-  <!-- Loading State -->
-  <mat-spinner [diameter]="40" *ngIf="data.weatherState === LoadingState.LOADING"></mat-spinner>
-  <!-- Error State -->
-  <app-error class="error-container" *ngIf="data.weatherState === LoadingState.FAILED">An error has occured. Please try again...</app-error>
-
-  <app-city *ngFor="let weather of weathers; let i = index" [weather]="weather" (seeHourly)="seeHourlyChart(i)" ></app-city>
-</div>
-
-<div class="chart"
-id="timeline-chart"
-[hidden]="!chartData">
-<div class="chart-header">
-<span>{{chartData?.name}}
-</span>
-<button mat-icon-button (click)="closeChart()">
-  <mat-icon>close</mat-icon>
-</button>
-</div>
-  <app-line-chart
-  [chartData]="chartData"></app-line-chart>
-</div>
+  <div class="chart" id="timeline-chart" [hidden]="!chartData">
+    <div class="chart-header">
+      <span>{{ chartData?.name }}</span>
+      <button mat-icon-button (click)="closeChart()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <app-line-chart [chartData]="chartData"></app-line-chart>
+  </div>
 </ng-container>

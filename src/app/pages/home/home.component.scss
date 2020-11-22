@@ -1,4 +1,4 @@
-@import '/src/assets/scss/variables.scss';
+@import "/src/assets/scss/variables.scss";
 
 mat-toolbar {
   position: relative;
@@ -20,10 +20,7 @@ mat-toolbar {
     @media only screen and (max-width: 400px) {
       font-size: 1.3rem;
     }
-
-
   }
-
 }
 
 .city-container {
@@ -45,13 +42,21 @@ mat-toolbar {
     margin-top: 2rem;
     width: 22rem;
 
+    transition: all 300ms;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
     &:first-child {
       margin-left: 0;
     }
 
     //2 item + 2 item + 1 item in row
     @media screen and (max-width: 679px) {
-      &:nth-child(3), &:nth-child(5) {
+      &:nth-child(3),
+      &:nth-child(5) {
         margin-left: 0;
       }
     }
@@ -77,18 +82,18 @@ mat-toolbar {
       font-size: 2.3rem;
       font-weight: bold;
       letter-spacing: 1px;
-  }
+    }
 
-  button {
-    margin-left: 1rem;
-    color: $color-black;
-    mat-icon {
-      font-size: 2rem;
+    button {
+      margin-left: 1rem;
+      color: $color-black;
+      mat-icon {
+        font-size: 2rem;
+      }
     }
   }
-  }
 
-	app-line-chart {
+  app-line-chart {
     display: flex;
     margin: 5rem auto;
     width: 50%;
@@ -97,7 +102,5 @@ mat-toolbar {
     @media only screen and (max-width: 768px) {
       width: 90%;
     }
-
-
   }
 }

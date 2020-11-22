@@ -6,17 +6,15 @@ const PROVIDERS = [WeatherService, WeatherDataService];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-  ]
+  imports: [CommonModule],
 })
 export class CoreModule {
   constructor() {}
 
-	static forRoot(): ModuleWithProviders<CoreModule> {
-		return {
-			ngModule: CoreModule,
-			providers: [...PROVIDERS],
-		};
-	}
- }
+  static forRoot(): ModuleWithProviders<CoreModule> {
+    return {
+      ngModule: CoreModule,
+      providers: [...PROVIDERS],
+    };
+  }
+}

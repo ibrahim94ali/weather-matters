@@ -6,18 +6,14 @@ import { CityComponent } from './city/city.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: HomeComponent,
-	},
+  {
+    path: '',
+    component: HomeComponent,
+  },
 ];
 
 @NgModule({
   declarations: [HomeComponent, CityComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 })
-export class HomeModule { }
+export class HomeModule {}

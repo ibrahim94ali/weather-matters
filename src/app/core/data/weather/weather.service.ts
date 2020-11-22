@@ -7,17 +7,17 @@ import { FullWeather } from './weather';
 import { capitalize } from 'src/app/shared/utils/util-functions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WeatherService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getWeatherByName(lat: number, lon: number): Observable<FullWeather> {
-    return this.http.get<FullWeather>(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=daily,minutely&appid=${environment.weatherAPIKey}`)
-    .pipe(
-      map((result: FullWeather) => this.addIconLink(result))
-    );
+    return this.http
+      .get<FullWeather>(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=daily,minutely&appid=${environment.weatherAPIKey}`
+      )
+      .pipe(map((result: FullWeather) => this.addIconLink(result)));
   }
 
   //adding icon links based on current weather icon id
@@ -27,7 +27,7 @@ export class WeatherService {
     result.name = capitalize(this.parseNames(result?.timezone));
 
     if (result?.current?.weather?.length) {
-      result.current.weather[0].icon_link = `http://openweathermap.org/img/wn/${result.current.weather[0].icon}.png`
+      result.current.weather[0].icon_link = `http://openweathermap.org/img/wn/${result.current.weather[0].icon}.png`;
     }
     return result;
   }

@@ -9,49 +9,47 @@ import { State } from 'src/app/shared/utils/util-functions';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations: [listAnimation]
+  animations: [listAnimation],
 })
 export class HomeComponent implements OnInit {
-
-	public LoadingState: typeof State = State;
+  public LoadingState: typeof State = State;
   chartData: LineChartData;
-
 
   weatherState$ = this.weatherDataService.weatherState$;
   weathers: FullWeather[];
   weathers$ = this.weatherDataService.weathers$.pipe(
     //waiting all 5 results to come
-    filter(result => result?.length === 5),
-    map(result => {
-      this.weathers = result.sort((a, b) => a?.name > b?.name ? 1 : -1);
+    filter((result) => result?.length === 5),
+    map((result) => {
+      this.weathers = result.sort((a, b) => (a?.name > b?.name ? 1 : -1));
       return this.weathers;
     })
   );
 
-  constructor(private weatherDataService: WeatherDataService) { }
+  constructor(private weatherDataService: WeatherDataService) {}
 
   ngOnInit(): void {
     this.weatherDataService.getWeathers();
   }
 
   mapChartLabels(data: FullWeather): string[] {
-			return data.hourly.map((hour) => {
-        //converting unix timestamp to HH:mm only
-        return new Date(hour.dt * 1000).toTimeString().slice(0, 5);
-      });
-    }
+    return data.hourly.map((hour) => {
+      //converting unix timestamp to HH:mm only
+      return new Date(hour.dt * 1000).toTimeString().slice(0, 5);
+    });
+  }
 
   mapChartData(data: FullWeather): number[] {
-      return data.hourly.map((hour) => Math.round(hour.temp));
-    }
+    return data.hourly.map((hour) => Math.round(hour.temp));
+  }
 
   seeHourlyChart(i: number): void {
     //adding data to chart for 24 hours
     this.chartData = {
       labels: this.mapChartLabels(this.weathers[i]).slice(0, 24),
       data: this.mapChartData(this.weathers[i]).slice(0, 24),
-      name: this.weathers[i].name
-    }
+      name: this.weathers[i].name,
+    };
     setTimeout(() => {
       //scrolling to bottom of the page
       window.scrollTo(0, document.body.scrollHeight);

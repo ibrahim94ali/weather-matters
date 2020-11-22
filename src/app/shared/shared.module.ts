@@ -10,8 +10,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LineChartModule } from './line-chart/line-chart.module';
 import { ErrorModule } from './error/error.module';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -22,7 +20,7 @@ import { ErrorModule } from './error/error.module';
     LineChartModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    ErrorModule
+    ErrorModule,
   ],
   exports: [
     MatCardModule,
@@ -31,7 +29,7 @@ import { ErrorModule } from './error/error.module';
     LineChartModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    ErrorModule
-  ]
+    ErrorModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
