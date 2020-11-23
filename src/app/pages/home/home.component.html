@@ -21,6 +21,7 @@
       *ngFor="let weather of weathers; let i = index"
       [weather]="weather"
       (seeHourly)="seeHourlyChart(i)"
+      class="city"
     ></app-city>
   </div>
 

@@ -6,6 +6,23 @@ export class AppPage {
   }
 
   async getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText();
+    return element(by.tagName('h1')).getText();
+  }
+
+  async getLogo(): Promise<boolean> {
+    return element(by.id('logo')).isDisplayed();
+  }
+
+  async getCityCards(): Promise<number> {
+    return (await element.all(by.className('city'))).length;
+  }
+
+  async clickToSeeTheChart(): Promise<boolean> {
+    await element(by.tagName('button')).click();
+    return element(by.id('timeline-chart')).isDisplayed();
+  }
+
+  async getWeatherIcons(): Promise<number> {
+    return (await element.all(by.className('weather-icon'))).length;
   }
 }

@@ -1,6 +1,7 @@
 <mat-card class="card">
   <mat-card-header>
     <img
+      class="weather-icon"
       mat-card-avatar
       *ngIf="weather?.current?.weather?.length"
       src="{{ weather.current.weather[0].icon_link }}"
