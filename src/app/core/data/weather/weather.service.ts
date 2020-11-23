@@ -17,13 +17,13 @@ export class WeatherService {
       .get<FullWeather>(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=daily,minutely&appid=${environment.weatherAPIKey}`
       )
-      .pipe(map((result: FullWeather) => this.addIconLink(result)));
+      .pipe(
+        map((result: FullWeather) => this.addAdditionalInformation(result))
+      );
   }
 
-  //adding icon links based on current weather icon id
-  addIconLink(result: FullWeather): FullWeather {
-    if (!result) return;
-
+  //adding names and icon links based on current weather icon id
+  addAdditionalInformation(result: FullWeather): FullWeather {
     result.name = capitalize(this.parseNames(result?.timezone));
 
     if (result?.current?.weather?.length) {

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   public LoadingState: typeof State = State;
   chartData: LineChartData;
 
-  weatherState$ = this.weatherDataService.weatherState$;
+  weathersState$ = this.weatherDataService.weathersState$;
   weathers: FullWeather[];
   weathers$ = this.weatherDataService.weathers$.pipe(
     //waiting all 5 results to come
@@ -35,12 +35,12 @@ export class HomeComponent implements OnInit {
   mapChartLabels(data: FullWeather): string[] {
     return data.hourly.map((hour) => {
       //converting unix timestamp to HH:mm only
-      return new Date(hour.dt * 1000).toTimeString().slice(0, 5);
+      return new Date(hour.dt * 1000)?.toTimeString()?.slice(0, 5);
     });
   }
 
   mapChartData(data: FullWeather): number[] {
-    return data.hourly.map((hour) => Math.round(hour.temp));
+    return data.hourly.map((hour) => Math.round(hour?.temp));
   }
 
   seeHourlyChart(i: number): void {

@@ -1,12 +1,12 @@
 export interface FullWeather {
   current: CurrentWeather;
-  hourly: HourlyWeather [];
+  hourly: HourlyWeather[];
   lat: number;
   lon: number;
   timezone: string;
   timezone_offset: number;
   name?: string;
-};
+}
 
 export interface CurrentWeather {
   clouds: number;
@@ -15,19 +15,19 @@ export interface CurrentWeather {
   feels_like: number;
   humidity: number;
   pressure: number;
-  sunrise: number;
-  sunset: number;
+  sunrise?: number;
+  sunset?: number;
   temp: number;
-  uvi: number;
+  uvi?: number;
   visibility: number;
-  weather: Weather [];
+  weather: Weather[];
   wind_deg: number;
   wind_speed: number;
-};
+}
 
 export interface HourlyWeather extends CurrentWeather {
   pop: number;
-};
+}
 
 export interface Weather {
   description: string;
@@ -35,27 +35,27 @@ export interface Weather {
   id: number;
   main: string;
   icon_link?: string; //icon link will be generated here
-};
+}
 
 export const cityCoordinates = {
-  'amsterdam': {
+  amsterdam: {
     lat: 52.37,
-    lon: 4.89
+    lon: 4.89,
   },
-  'london' : {
+  london: {
     lat: 51.51,
-    lon: -0.12
+    lon: -0.12,
   },
-  'paris': {
+  paris: {
     lat: 48.85,
-    lon: 2.35
+    lon: 2.35,
   },
-  'moscow': {
+  moscow: {
     lat: 55.75,
-    lon: 37.61
+    lon: 37.61,
   },
-  'skopje': {
+  skopje: {
     lat: 42,
-    lon: 21.42
-  }
-}
+    lon: 21.42,
+  },
+};

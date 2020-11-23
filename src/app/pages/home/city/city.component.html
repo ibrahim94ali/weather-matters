@@ -1,11 +1,15 @@
 <mat-card class="card">
   <mat-card-header>
-    <img mat-card-avatar src="{{ weather.current.weather[0].icon_link }}" />
+    <img
+      mat-card-avatar
+      *ngIf="weather?.current?.weather?.length"
+      src="{{ weather.current.weather[0].icon_link }}"
+    />
     <mat-card-title class="card-header-title">{{
-      weather.name
+      weather?.name
     }}</mat-card-title>
     <mat-card-subtitle class="card-header-subtitle">{{
-      weather.current.weather[0].description
+      weather?.current?.weather[0]?.description
     }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>

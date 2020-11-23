@@ -8,9 +8,8 @@ describe('LineChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LineChartComponent ]
-    })
-    .compileComponents();
+      declarations: [LineChartComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,16 @@ describe('LineChartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render a canvas', () => {
+    const fixture = TestBed.createComponent(LineChartComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('canvas')).toBeTruthy();
+  });
+
+  it('should have no data initially', () => {
+    expect(component.chartData).toBeUndefined();
   });
 });

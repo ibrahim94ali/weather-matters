@@ -16,7 +16,7 @@ export class WeatherDataService {
   private readonly _weathersState = new BehaviorSubject<State>(
     State.UNINITIALIZED
   );
-  readonly weatherState$ = this._weathersState.asObservable();
+  readonly weathersState$ = this._weathersState.asObservable();
 
   constructor(private weatherService: WeatherService) {}
 
