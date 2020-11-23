@@ -24,13 +24,22 @@
     ></app-city>
   </div>
 
-  <div class="chart" id="timeline-chart" [hidden]="!chartData">
-    <div class="chart-header">
-      <span>{{ chartData?.name }}</span>
-      <button mat-icon-button (click)="closeChart()">
+  <div [hidden]="!chartData">
+    <mat-card class="card">
+      <button mat-icon-button (click)="closeChart()" class="close-btn">
         <mat-icon>close</mat-icon>
       </button>
-    </div>
-    <app-line-chart [chartData]="chartData"></app-line-chart>
+      <mat-card-header class="card-header">
+        <mat-card-title class="card-header-title">{{
+          chartData?.name
+        }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-line-chart
+          [chartData]="chartData"
+          id="timeline-chart"
+        ></app-line-chart>
+      </mat-card-content>
+    </mat-card>
   </div>
 </ng-container>

@@ -12,3 +12,22 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+//default card styles
+.card {
+  &-header {
+    &-title {
+      color: $color-primary;
+    }
+
+    &-subtitle {
+      color: $color-black;
+      font-style: italic;
+    }
+  }
+
+  &-actions {
+    display: flex !important; //it overrides to block if not important
+    justify-content: center;
+  }
+}

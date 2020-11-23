@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
       name: this.weathers[i].name,
     };
     setTimeout(() => {
-      //scrolling to bottom of the page
+      //scrolling to bottom of the page. We need timeout function to wait canvas to be rendered
       window.scrollTo(0, document.body.scrollHeight);
     }, 100);
   }
