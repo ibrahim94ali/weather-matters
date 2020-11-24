@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy-ghpages": "ng build --prod --base-href 'https://ibrahim94ali.github.io/weather-matters/' && ngh --dir dist/weather-matters"
+    "deploy-ghpages": "ng build --prod --base-href https://ibrahim94ali.github.io/weather-matters/ && ngh --dir dist/weather-matters"
   },
   "private": true,
   "dependencies": {
