@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { WeatherService } from './weather.service';
 import { cityCoordinates, FullWeather } from './weather';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, forkJoin, of } from 'rxjs';
 import { State } from 'src/app/shared/utils/util-functions';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,26 +25,22 @@ export class WeatherDataService {
     this._weathersState.next(State.LOADING);
 
     //getting weather of each city
+    let cityObservables = [];
     this.cityNamesList.forEach((name) => {
       const { lat, lon } = cityCoordinates[name];
-      this.weatherService.getWeatherByName(lat, lon).subscribe(
-        (res: FullWeather) => {
-          this._weathers.next([...this._weathers.value, res]);
-
-          //if all results have come successfully
-          if (
-            this._weathersState.value !== State.FAILED &&
-            this._weathers.value?.length === this.cityNamesList.length
-          ) {
-            this._weathersState.next(State.SUCCESS);
-          }
-        },
-        (error) => {
-          //one city has failed
-          this._weathersState.next(State.FAILED);
-          console.error(error);
-        }
-      );
+      cityObservables.push(this.weatherService.getWeatherByName(lat, lon));
     });
+
+    forkJoin(cityObservables)
+      .pipe(
+        catchError((error) => {
+          this._weathersState.next(State.FAILED);
+          return of(error);
+        })
+      )
+      .subscribe((val: FullWeather[]) => {
+        this._weathers.next(val);
+        this._weathersState.next(State.SUCCESS);
+      });
   }
 }
